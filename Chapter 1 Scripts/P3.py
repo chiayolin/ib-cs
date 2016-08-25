@@ -14,7 +14,7 @@
 # license: MIT License
 #
 
-# "self-documenting code" :)
+# "self-documenting code"
 what = ["here stores the base", "the power stores here"]
 for now, prompt in enumerate(("what base? ", "what power of {}? ")):
     print(prompt.format(what[now - 1]), end = '')
