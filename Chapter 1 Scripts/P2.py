@@ -14,4 +14,4 @@
 
 # λeah
 (lambda x: print("2 to the power of", x, "is", 2**x))(\
-    int(input("what power of 2? ")))
+    int(input("What power of 2? ")))

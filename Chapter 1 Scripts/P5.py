@@ -15,5 +15,5 @@
 
 import math
 
-(lambda n: print("for {} cities, there are {} possible routes".
-    format(n, math.factorial(n))))(int(input("how many cities? ")))
+(lambda n: print("For {} cities, there are {} possible routes".
+    format(n, math.factorial(n))))(int(input("How many cities? ")))

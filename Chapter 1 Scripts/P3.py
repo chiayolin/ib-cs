@@ -16,7 +16,7 @@
 
 # "self-documenting code"
 what = ["here stores the base", "the power stores here"]
-for now, prompt in enumerate(("what base? ", "what power of {}? ")):
+for now, prompt in enumerate(("What base? ", "What power of {}? ")):
     print(prompt.format(what[now - 1]), end = '')
     what[now] = int(input())
 
