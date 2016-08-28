@@ -12,5 +12,8 @@
 #
 
 # init
-print((lambda possible_games, population: \
-    (possible_games / population) / 365)(1e120, 7e9), "years")
+possible_games = 1e120
+population_now = 7e9
+
+# main
+print((possible_games / population_now) / 365, "years")
