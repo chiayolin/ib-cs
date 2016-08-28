@@ -22,5 +22,5 @@ number_of_routes = math.factorial(number_of_cities)
 brute_force_time = (number_of_routes / compute_time_rps) / 60 / 60 / 24 / 365
 
 print(("For {} cities, there are {} possible routes.\n" +
-       "And it will take a computer about {} years to solve.").
+       "It will take a computer about {} years to solve.").
             format(number_of_cities, number_of_routes, brute_force_time))
