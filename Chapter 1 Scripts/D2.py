@@ -16,4 +16,4 @@ possible_games = 1e120
 population_now = 7e9
 
 # main
-print((possible_games / population_now) / 365, "years")
+print((possible_games / (population_now / 2)) / 365, "years")
