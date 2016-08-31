@@ -6,7 +6,7 @@
 #
 # date:    08/31/2016
 # author:  Charles Dierbach, Chiayo Lin
-# license: GPL 3.0
+# license: n/a
 #
 
 # Restaurant Tab Calculation Program
