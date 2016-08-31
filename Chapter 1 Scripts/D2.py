@@ -11,9 +11,13 @@
 # license: MIT License
 #
 
-# init
+## init
 possible_games = 1e120
 population_now = 7e9
 
-# main
-print((possible_games / (population_now / 2)) / 365, "years")
+## main
+# population is divided by 2 because a game needs two people to play
+print("It will take about", (possible_games / (population_now / 2)) / 365, 
+      "years to play", possible_games, "\nchess games if", int(population_now), 
+      "humans play one chess game everyday.")
+
