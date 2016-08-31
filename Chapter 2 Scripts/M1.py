@@ -5,7 +5,7 @@
 # rate is entered by the user.
 #
 # date:    08/31/2016
-# author:  Chiayo Lin
+# author:  Charles Dierbach, Chiayo Lin
 # license: GPL 3.0
 #
 
