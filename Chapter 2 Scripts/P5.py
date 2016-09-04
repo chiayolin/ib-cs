@@ -20,8 +20,9 @@ numero_uno = int(input("Enter the first number: "))
 numero_dos = int(input("Enter the second number: "))
 
 operations = lambda x, y: \
-    (('+', x + y), ('-', x - y), ('*', x * y), ('/', format(x / y, '.2f')), 
-     ('//', x // y), ('%', x % y), ('**', format(x ** y, ',')))
+    (('+', x + y), ('-', x - y), ('*', x * y), 
+     ('/', format(x / y, ',.2f')), ('//', x // y), ('%', x % y), ('**', x ** y))
 
 for operator, result in operations(numero_uno, numero_dos):
-    print(numero_uno, operator, numero_dos, '=', result)
+    print(numero_uno, operator, numero_dos, '=', 
+        type(result) is str and result or format(result, ','))
