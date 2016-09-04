@@ -24,7 +24,7 @@ _tuple = zip(range(0, _range), list(reversed(range(_range))))
 # main
 prompt = ("leftmost", "the next")
 for place, power in _tuple:
-    print("Enter", prompt[1 if place else 0], "digit: ", end = '')
+    print("Enter", prompt[place and 1 or 0], "digit: ", end = '')
     _input[place] = int(input()) * (2**power)
 
 print("The value is", sum(_input))
