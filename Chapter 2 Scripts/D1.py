@@ -39,4 +39,5 @@
 # License: GPL 3.0
 #
 
-print("The subject will get 2635249153387079 pounds of wheat.")
+print("The subject will get {} pounds of wheat.". 
+    format(int(((1 - (2**64)) / ( 1 - 2)) * (1 / 7000)), ','))
