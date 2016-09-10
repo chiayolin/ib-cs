@@ -50,15 +50,15 @@
 #   per each format.
 #
 # Implementaiton:
-#   Print the results of some arithmetics.
+#   Print the results after some arithmetics.
 #
 # Date:    09/10/2016
 # Author:  Chiayo Lin
 # License: GPL 3.0
 
 flash_drive_size = int(input("Enter USB size (GB): ")) * 1e9
-formats_and_bytes = (("GIF", 96000), ("JPGE", 57600), 
-                     ("PNG", 180000), ("TIFF", 2880000))
+formats_and_bytes = \
+    (("GIF", 96000), ("JPGE", 57600), ("PNG", 180000), ("TIFF", 2880000))
 
 for name, size in formats_and_bytes: 
     print("{0:<5} images in {1} format can be stored".
