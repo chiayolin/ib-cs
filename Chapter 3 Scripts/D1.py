@@ -62,4 +62,6 @@ def main():
     print(data[VALUE], data[BASE], "is", result, data[TARGET] + '.', 
         goodbye[randint(0, len(goodbye) - 1)] + '!')
 
+    return 0
+
 __name__ == "__main__" and main() or None
