@@ -25,3 +25,7 @@ else:
         # the problem does not state what to do when the user enters an
         # invalid option so here it does nothing.
         None
+
+'''
+In this case, just don't include the else
+'''
