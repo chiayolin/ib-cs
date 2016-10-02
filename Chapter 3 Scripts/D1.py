@@ -1,7 +1,7 @@
 # D1.py - Metric Conversion
 #
 # Develop and test a Python program that converts pounds to grams, 
-# inches to centimeters, and kilometers to miles. The program should 
+# inches to entimeters, and kilometers to miles. The program should 
 # allow conversions both ways.
 #
 # date:    10/02/2016
@@ -18,12 +18,12 @@ def parser(string):
     
     # helper functions
     tokenise = lambda string: string.split()
-    is_number = lambda string: string.replace('.', '', 1).isdigit()
-    is_valid = lambda base, target: \
+    is_digit = lambda string: string.replace('.', '', 1).isdigit()
+    validate = lambda base, target: \
         (base <= 4 and target <= 4) or (base > 4 and target > 4)
     
     # parse the sentence
-    value = list(filter(lambda term: is_number(term), tokenise(string)))
+    value = list(filter(lambda term: is_digit(term), tokenise(string)))
     units = list(filter(lambda term: term in tokens, tokenise(string))) 
 
     # return None if the sentence doesn't provide enough information
@@ -31,7 +31,7 @@ def parser(string):
         return None   
     
     # return a tuple if the sentence is valid
-    elif is_valid(tokens.index(units[BASE]), tokens.index(units[TARGET])):
+    elif validate(tokens.index(units[BASE]), tokens.index(units[TARGET])):
         return (units[BASE], units[TARGET], value[BASE])
     
     # return None if the sentence is invalid
