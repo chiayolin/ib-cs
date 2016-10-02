@@ -13,8 +13,8 @@
 # author:  Chiayo Lin
 # license: GPL 3.0
 
-# i can't write a pair of while loops for this problem, sorry.
-# a _potential_ O(n^2) solution to this problem is just a sin. 
+# i can't write a pair of while loops for this problem. a 
+# _potential_ O(n^2) solution to this problem is just a sin. 
 # but if i really have to nest it, here is the solution: 
 counter = 0
 while counter != 100:
