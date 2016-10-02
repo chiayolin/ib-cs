@@ -29,19 +29,21 @@ def parser(string):
     # return None if the sentence doesn't provide enough information
     if len(units) < 2 or len(value) <= 0:
         return None   
+    
     # return a tuple if the sentence is valid
     elif is_valid(tokens.index(units[BASE]), tokens.index(units[TARGET])):
         return (units[BASE], units[TARGET], value[BASE])
+    
     # return None if the sentence is invalid
     return None
 
 def unit_converter(value, base, target):
-    pre_ratio = { "mi" : 160934, "km" : 100000, "in" : 2.54,
+    base_ratio = { "mi" : 160934, "km" : 100000, "in" : 2.54,
             "m" : 100, "cm" : 1, "g" : 0.001, "lbs" : 0.453592, "kg" : 1}
-    post_ratio = { "mi" : 6.21371e-6, "km" : 1e-5, "in" : 0.393701, 
+    target_ratio = { "mi" : 6.21371e-6, "km" : 1e-5, "in" : 0.393701, 
             "m" : 0.01, "cm" : 1, "g" : 1000, "lbs" : 2.20462, "kg" : 1 }
     
-    return float(value) * pre_ratio[base] * post_ratio[target]
+    return float(value) * base_ratio[base] * target_ratio[target]
 
 def main():
     print("Hello. I would like to help you with unit conversions!\n" +
