@@ -27,8 +27,6 @@ def main():
     # helpers
     get_option = lambda string: string and string.lower()[0]
     is_invalid = lambda option: option not in ('f', 'c', 'k')
-    absolute_0 = lambda base, temp: \
-        float(temp) < { 'f' : -459.67, 'c' : -273.15, 'k' : 0 }[base]
     
     # greet
     print('This program converts temperatures (Fahrenheit/Celsius/Kelven)')
@@ -42,7 +40,7 @@ def main():
     # get the temperture
     # TODO: fix crash on carriage return when nothing is entered
     temp = input('Enter temperature to convert: ')
-    while absolute_0(base, temp):
+    while float(temp) < { 'f' : -459.67, 'c' : -273.15, 'k' : 0 }[base]:
         temp = input('Invalid, try again: ')
     
     # convert temp based upon base and target entered

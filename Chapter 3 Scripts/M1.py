@@ -24,9 +24,8 @@ which = input('Enter selection: ')
 while which != 'F' and which != 'C':
     which = input("Please enter 'F' or 'C': ")
 
-absolute_0 = lambda t: float(t) < { 'F' : -459.67, 'C' : -273.15 }[which]
 temp = float(input('Enter temperature to convert: '))
-while absolute_0(temp):
+while temp < { 'F' : -459.67, 'C' : -273.15 }[which]:
     temp = float(input("Invalid, try again: "))
 
 # Determine temperature conversion needed and display results
