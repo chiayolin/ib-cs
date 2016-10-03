@@ -68,10 +68,11 @@ while not terminate:
         else:
             coin_counter += 1  # increment the coin counter
             total += int(entry)
+            
             if total > amount:
                 print('Sorry - total amount exceeds', amount, 'cents.')
                 game_over = True
-            # break the iteration if coin counter exceeds the least possible
+            # break the loop if coin counter exceeds the least possible 
             # number of coins:
             elif coin_counter > coin_total:
                 print('Sorry - least possible number of coins must be entered')
