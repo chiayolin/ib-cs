@@ -59,8 +59,8 @@ def main():
     
     # print the result
     goodbye = ("Goodbye", "Have a good day", "See you later", "Adios")
-    print(data[VALUE], data[BASE], "is", result, data[TARGET] + '.', 
-        goodbye[randint(0, len(goodbye) - 1)] + '!')
+    print(data[VALUE], data[BASE], "is", format(result, '.6f'), data[TARGET] + 
+        '.', goodbye[randint(0, len(goodbye) - 1)] + '!')
 
     return 0
 
