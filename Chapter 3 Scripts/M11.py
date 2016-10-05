@@ -39,14 +39,30 @@ trigger = {
     "email" : "Tell me the best way to cover up emails.",
     "communist" : "Look out you Commies!" }
 
-raw_str = input().replace("?", "").lower().split(" ")
+std_response = [ 
+    "The probabilities are in your favor.",
+    "I wouldn't make any definite plans.",
+    "The outlook is dim",
+    "I would focus my thoughts on something else.",
+    "You are the only one that can answer that!",
+    "You know the answer to that already, don't you?",
+    "Someone unexpected can be most helpful with this.",
+    "It is close to certainty." ]
 
-# extract a token from the sentence 
-token = list(filter(lambda token: token in trigger, raw_str))
-if not token:
-    response = "I don't know"
-else:
-    key = len(token) > 1 and token[randint(0, len(token) - 1)] or token[0]
-    response = trigger[key]
+terminate = 0
 
-print(response)
+while not terminate:
+    raw_str = input("What is your question?\n").replace("?", "").lower().split(" ")
+
+    # extract a token from the sentence 
+    token = list(filter(lambda token: token in trigger, raw_str))
+    if not token:
+        response = std_response[randint(0, len(std_response) - 1)]
+    else:
+        key = len(token) > 1 and token[randint(0, len(token) - 1)] or token[0]
+        response = trigger[key]
+
+    print(response)
+    
+    choice = input("Do you have another question? (y/n) ").lower().strip()[0]
+    terminate = not (choice is 'y') and 1 or 0
