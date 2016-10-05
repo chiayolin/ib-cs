@@ -36,5 +36,7 @@ elif miles_traveled >= miles_between_oil_change - miles_warning:
         ' miles left before the next oil change.\n' +
         'You will soon be due for an oil change.')
 else:
-    print('You are not in immediate need of an oil change')
+    print(str(miles_between_oil_change - miles_traveled) +
+        ' miles left before the next oil change.\n' +
+        'You are not in immediate need of an oil change')
 
