@@ -31,11 +31,12 @@ start_rate = 3
 final_rate = 18
 amount = 350000
 
-D = lambda r, n: ((1 + r) ** (n) - 1) / (r * (1 + r) ** n)
+discount_factor = lambda r, n: ((1 + r) ** (n) - 1) / (r * (1 + r) ** n)
 
 def print_rate_table(rate):
     print("     {0:<21}{1:.2f}".format(str(rate) + '%', 
-        amount / D(rate / 100 / 12, term * 12)))
+        amount / discount_factor(rate / 100 / 12, term * 12)))
+    
     if rate == final_rate: 
         return None
     return print_rate_table(rate + 1)
