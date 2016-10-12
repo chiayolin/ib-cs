@@ -52,16 +52,20 @@ std_response = [
 terminate = 0
 
 while not terminate:
+    # get a sentence
     raw_str = input("What is your question?\n").replace("?", "").lower().split(" ")
 
     # extract a token from the sentence 
     token = list(filter(lambda token: token in trigger, raw_str))
+    
+    # compose a response
     if not token:
         response = std_response[randint(0, len(std_response) - 1)]
     else:
         key = len(token) > 1 and token[randint(0, len(token) - 1)] or token[0]
         response = trigger[key]
-
+    
+    # print the response
     print(response)
     
     choice = input("Do you have another question? (y/n) ").lower().strip()[0]
