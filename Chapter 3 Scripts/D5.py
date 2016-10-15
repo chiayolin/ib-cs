@@ -15,7 +15,7 @@
 #   | 15 - 18 years |      11 - 23      |
 #   +---------------+-------------------+
 # 
-# For heart rate, use an average of 67.5 beats per second.
+# For heart rate, use an average of 67.5 beats per minute.
 #
 # SOLUTION:
 # Write a program that prompts the user for an age between 0 to 18 and 
@@ -37,9 +37,15 @@
 # license: GPL 3.0
 
 def heartbeats(age):
-    return int(6.75 * 31536000 * age)
+    # 6.75 * 365 * 24 * 60 --> 212868000
+    # age + 1 because infant year is taken into the account.
+    return 212868000 * (age + 1)
 
 def respiration(age):
+    # because Python's lambda is broken, "and" & "or" are used here
+    # to emulate the behavior of a regular if-elif-else statement.
+    # here's an interesting article to read:
+    #   <http://xahlee.info/perl-python/python_3000.html>
     avg_breath_per_year_by_age = lambda y:  \
         y <=  0 and 22338000 or             \
         y >=  1 and y <=  4 and 13140000 or \
@@ -52,8 +58,11 @@ def respiration(age):
     # resulting list and return the sum (total breaths taken).
     return sum(map(avg_breath_per_year_by_age, range(0, age + 1)))
 
-age = int(input("What is your age (0 - 18)? "))
-print("Invalid input.") if age not in range(0, 19) else \
-    print("You have had", heartbeats(age), "heartbeats",
-          "and you have taken", respiration(age), "breaths.")
+# below is an example of the code that gives people nightmares but we 
+# are not mutating any varibles since input() is taken as an function
+# arguement to a lambda :D
+(lambda age: print("Invalid input.") if age not in range(0, 19) \
+    else print("You have had", heartbeats(age), "heartbeats",
+        "and you have taken", respiration(age), "breaths."))    \
+            (int(input("What is your age (0 - 18)? ")))
 
