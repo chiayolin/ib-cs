@@ -1,10 +1,13 @@
 ; P7.scm
 ;
-; Display the integer values 1–100 as given in question P6 using Scheme.
+; Display the integer values 1–100 as given in question P6 using 
+; Scheme (I run Scheme on Racket with SICP extension).
 ;
 ; date:    10/16/2016
 ; author:  Chiayo Lin
 ; license: GPL 3.0
+
+#lang sicp
 
 (define divisible? 
   (lambda (x y) 
