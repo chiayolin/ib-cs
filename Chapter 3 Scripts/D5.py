@@ -59,10 +59,9 @@ def respiration(age):
     return sum(map(avg_breath_per_year_by_age, range(0, age + 1)))
 
 # below is an example of the code that gives people nightmares but we 
-# are not mutating any varibles since input() is taken as an function
-# arguement to a lambda :D
-(lambda age: print("Invalid input.") if age not in range(0, 19) \
-    else print("You have had", heartbeats(age), "heartbeats",
-        "and you have taken", respiration(age), "breaths."))    \
+# are not mutating any varibles (yay!) since int(input(...)) is taken 
+# as the function arguement to a lambda.
+(lambda age: print("Invalid input.") if age not in range(0, 18 + 1) \
+    else print("You have had", heartbeats(age), "heartbeats",       \
+        "and you have taken", respiration(age), "breaths."))        \
             (int(input("What is your age (0 - 18)? ")))
-
