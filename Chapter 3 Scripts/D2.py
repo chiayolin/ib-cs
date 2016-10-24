@@ -21,4 +21,14 @@ def next_leap_year(now):
 
 now = datetime.datetime.now().year
 end = int(input("Ente a final year: "))
-print(*list(range(next_leap_year(now), end, 4)), sep = '\n')
+print(*filter(is_leap_year, range(next_leap_year(now), end + 4, 4)), sep = '\n')
+
+
+'''
+Chiayo, this program has a logic error. 2100, 2200 and 2300 ar not
+leap years. 2400 is.
+
+It's difficult to follow the logic with magic numbers like -1 and 1
+that are on line 15, but I'm pretty sure the error is the order of
+operations.
+'''

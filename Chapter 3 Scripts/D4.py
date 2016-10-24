@@ -26,10 +26,11 @@
 # author:  Chiayo Lin
 # license: GPL 3.0
 
-term = 30
+term = int(input("Enter the term: "))
 start_rate = 3
 final_rate = 18
-amount = 350000
+amount = int(input("Enter the amount: "))
+
 
 discount_factor = lambda r, n: ((1 + r) ** (n) - 1) / (r * (1 + r) ** n)
 
@@ -44,3 +45,8 @@ def print_rate_table(rate):
 print("Loan Amount: ${0:,}  Term: {1} years".format(amount, term))
 print("Interest Rate         Monthly Payment")
 print_rate_table(start_rate)
+
+'''
+This program should ask the user for an amount and number of years.
+Even better would be to ask for the rates as well.
+'''
