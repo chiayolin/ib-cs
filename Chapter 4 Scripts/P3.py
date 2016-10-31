@@ -4,7 +4,6 @@
 # stores them in a list.Forallvalues that are greater than 100, the 
 # string 'over' should be stored instead. The program should display the 
 # resulting list.
-
 #
 # date:    10/31/2016
 # author:  Chiayo Lin
