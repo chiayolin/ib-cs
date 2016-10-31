@@ -59,12 +59,12 @@ while not terminate:
     # output results
     cycle_num = (birth_year - 1900) % 12
     
-    print('\nYour',                                                               \
-        ethnicity == 'v' and 'Vietnamese' or                                      \
-        ethnicity == 'j' and 'Japanese' or 'Chinese', 'zodiac sign is',           \
+    print('\nYour',                                                                \
+        ethnicity == 'v' and 'Vietnamese' or                                       \
+        ethnicity == 'j' and 'Japanese' or 'Chinese', 'zodiac sign is',            \
         (type(zodiac_animals[cycle_num]) is tuple and (ethnicity in ('j', 'v') and \
-              zodiac_animals[cycle_num][1] or                                       \
-              zodiac_animals[cycle_num][0]) or                                      \
+              zodiac_animals[cycle_num][1] or                                      \
+              zodiac_animals[cycle_num][0]) or                                     \
               zodiac_animals[cycle_num]) + '.\n')
 
     print('Your personal characteristics ...')
