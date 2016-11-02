@@ -20,5 +20,7 @@ def get_list(buff):
     return (fruit == '' or weight == '') and             \
         sorted(buff) or get_list(buff + [[fruit, weight]])
 
-fruit_info = get_list(list()); print(end = '\n')
+fruit_info = get_list(list())
+print(end = '\n')
+
 list(map(lambda x: print(x[0] + ',', x[1], 'lbs.'), fruit_info))
