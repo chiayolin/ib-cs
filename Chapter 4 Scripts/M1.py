@@ -16,9 +16,8 @@
 import datetime
 
 # init
-zodiac_animals = ('Rat', ('Ox', 'Water Buffalo'), 'Tiger', ('Rabbit', 'Cat'), 
-                  'Dragon', 'Snake', 'Horse', 'Goat', 'Monkey', 'Rooster', 
-                  'Dog', ('Pig', 'Wild Boar'))
+zodiac_animals = ('Rat', 'Ox', 'Tiger', 'Rabbit', 'Dragon', 'Snake', 
+                  'Horse', 'Goat', 'Monkey', 'Rooster', 'Dog', 'Pig')
 
 rat = 'Forthright, industrious, sensitive, intellectual, sociable'
 ox = 'Dependable, methodical, modest, born leader, patient'
@@ -33,8 +32,8 @@ rooster = 'Organized, self-assured, decisive, perfectionist, zealous'
 dog = 'Honest, unpretentious, idealistic, moralistic, easy going'
 pig = 'Peace-loving, hard-working, trusting, understanding, thoughtful'
 
-characteristics = (rat, ox, tiger, rabbit, dragon, snake, horse, goat, monkey,
-                   rooster, dog, pig)
+characteristics = (rat, ox, tiger, rabbit, dragon, snake, 
+                   horse, goat, monkey, rooster, dog, pig)
 
 terminate = False
 
@@ -46,7 +45,7 @@ print('zodiac sign and associated personal characteristics.\n')
 current_yr = datetime.date.today().year
 
 while not terminate:
-    ethnicity = \
+    ethnic = \
         input('Choose a subset of Chinese zodiac sign (ZH/JP/VN): ').lower()[0]
 
     # get year of birth
@@ -57,18 +56,18 @@ while not terminate:
         birth_year = int(input('Enter your year of birth (yyyy): '))
 
     # output results
-    cycle_num = (birth_year - 1900) % 12
+    cycle = (birth_year - 1900) % 12
     
-    print('\nYour',                                                                \
-        ethnicity == 'v' and 'Vietnamese' or                                       \
-        ethnicity == 'j' and 'Japanese' or 'Chinese', 'zodiac sign is',            \
-        (type(zodiac_animals[cycle_num]) is tuple and (ethnicity in ('j', 'v') and \
-              zodiac_animals[cycle_num][1] or                                      \
-              zodiac_animals[cycle_num][0]) or                                     \
-              zodiac_animals[cycle_num]) + '.\n')
+    print('\nYour',                                                            \
+        ethnic is 'v' and 'Vietnamese' or                                      \
+        ethnic is 'j' and 'Japanese' or 'Chinese', 'zodiac sign is',          (\
+        ethnic is 'j' and zodiac_animals[cycle] is 'Pig' and 'Wild Boar' or    \
+        ethnic is 'v' and zodiac_animals[cycle] is 'Rabbit' and 'Cat' or       \
+        ethnic is 'v' and zodiac_animals[cycle] is 'Ox' and 'Water buffolo' or \
+                          zodiac_animals[cycle]) + '.\n')
 
     print('Your personal characteristics ...')
-    print(characteristics[cycle_num])
+    print(characteristics[cycle])
 
     # continue?
     response = input('\nWould you like to enter another year? (y/n): ')
