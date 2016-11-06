@@ -4,7 +4,7 @@
 # stores in another list only those values that are in tuple valid_values, 
 # and displays the resulting list.
 #
-# date:    09/25/2016
+# date:    10/28/2016
 # author:  Chiayo Lin
 # license: GPL 3.0
 
