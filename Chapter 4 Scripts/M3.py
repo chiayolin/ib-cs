@@ -59,7 +59,7 @@ def decrypt(ciphertext, final_vector):
 print('This program will encrypt and decrypt user passwords\n')
 
 end = False
-while not terminate:
+while not end:
     # get selection (encrypt/decrypt)
     which = input('Enter (e) to encrypt a password, and (d) to decrypt: ')
 
