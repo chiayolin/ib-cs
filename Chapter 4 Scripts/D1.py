@@ -36,6 +36,6 @@ while string:
 
     if string:
         # map each char in the string to a filter that finds the respective
-        # morsecode for a char. this is certainnly 
+        # morsecode for a char. I do this just to piss Guido van Rossum off.
         print(*map(lambda ch: cdr(filter(lambda x: ch in x, code)), string))
 
