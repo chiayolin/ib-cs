@@ -20,8 +20,8 @@ code = (('A', ".-"), ('B', "-..."), ('C', "-.-."), ('D', "-.."),
         ('U', "..-"), ('V', "...-"), ('W', ".--"), ('X', "-..-"),
         ('Y', "-.--"), ('Z', "--.."), (' ', ' '))
 
-# 'cdr' takes a pair as the argument, and returns its tail. 
 # 'car' takes a pair as the argument, and returns its head. 
+# 'cdr' takes a pair as the argument, and returns its tail. 
 # their names are come from Lisp: <https://en.wikipedia.org/wiki/Cons>
 def car(pair): return [*pair][0][0]
 def cdr(pair): return [*pair][0][1]
