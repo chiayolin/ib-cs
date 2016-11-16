@@ -18,7 +18,7 @@ code = (('A', ".-"),   ('B', "-..."), ('C', "-.-."), ('D', "-.."),
         ('M', "--"),   ('N', "-."),   ('O', "---"),  ('P', ".--."), 
         ('Q', "--.-"), ('R', ".-."),  ('S', "..."),  ('T', "-"),
         ('U', "..-"),  ('V', "...-"), ('W', ".--"),  ('X', "-..-"),
-        ('Y', "-.--"), ('Z', "--.."), (' ', ' '))
+        ('Y', "-.--"), ('Z', "--.."), (' ', ' '),    ('.', '\n\n'))
 
 # 'car' takes a pair as the argument, and returns its head. 
 # 'cdr' takes a pair as the argument, and returns its tail. 
@@ -33,9 +33,28 @@ while string:
     # get input from the user and filter the invalid char(s).
     string = [*filter(lambda c: c in map(lambda t: car(t), code), 
                input("Enter a sentence (return to end): ").upper())]
-
+    
     if string:
         # map each char in the string to a filter that finds the respective
         # morsecode for a char. I do this just to piss Guido van Rossum off.
         print(*map(lambda ch: cdr(filter(lambda x: ch in x, code)), string))
 
+'''
+Very clever code. I'm sure Guido is upset.
+There are a couple of format errors, though.
+This:
+
+This is a Morsecode converter, invalid char(s) will be ignored.
+Enter a sentence (return to end): What should I do? Help me.
+.-- .... .- -   ... .... --- ..- .-.. -..   ..   -.. ---   .... . .-.. .--.   -- .
+Enter a sentence (return to end):
+
+Should look like this:
+.-- .... .- - 
+... .... --- ..- .-.. -.. 
+.. 
+-.. --- 
+
+.... . .-.. .--. 
+-- .
+'''
