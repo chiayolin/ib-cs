@@ -17,7 +17,7 @@
 # Monday of September. 
 #
 # author:  Chiayo Lin
-# date:    11/07/2016
+# date:    11/16/2016
 # license: MIT License
 
 # return True if n is a number else return False
