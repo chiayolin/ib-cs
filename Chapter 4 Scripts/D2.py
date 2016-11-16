@@ -54,7 +54,7 @@ def get_bday():
         valid = is_valid_date(bday[0], bday[1], bday[2])
     
     # return a list if valid else call get_bday()
-    return valid and [*map(int, bday)] or get_bday()
+    return valid and [*map(int, bday[:3])] or get_bday()
 
 # prompt the user to enter a year and return the year
 def get_year():
