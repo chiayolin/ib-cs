@@ -57,7 +57,7 @@ def decrypt(ciphertext, final_vector):
     return reversed(plaintext)
 
 # program greeting
-print('This program will encrypt and decrypt user passwords\n')
+print('This program will encrypt and decrypt user passwords.')
 
 # get selection (encrypt/decrypt)
 which = input('Enter (e) to encrypt a password, and (d) to decrypt: ')
