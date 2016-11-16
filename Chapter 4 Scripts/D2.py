@@ -69,7 +69,7 @@ def get_option(prompt):
     if result != '':
         return True if result[0] == 'y' else False
     
-    get_option(prompt)
+    return get_option(prompt)
 
 # Sakamoto's the day of week algorithm
 def dow(m, d, y):
@@ -134,7 +134,7 @@ def print_holidays(year, bday):
 
 def main():
     print_holidays(get_year(), get_bday())
-    
+
     return None if not get_option("Try again (y/n)? ") else main()
         
 __name__ == "__main__" and main() or None
