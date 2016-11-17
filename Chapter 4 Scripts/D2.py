@@ -84,7 +84,7 @@ def dow(m, d, y):
 
 # return the day of September labour day falls on in year y
 def find_labour_day(d, y):
-    return dow(9, d, y) == 2 and d + 7 or find_labour_day(d + 1, y)
+    return dow(9, d, y) == 1 and d or find_labour_day(d + 1, y)
 
 # print the holidays based off given arguments
 def print_holidays(year, bday):
@@ -127,7 +127,7 @@ def print_holidays(year, bday):
         if holiday == len(holidays) - 1:
             return None
 
-        holidays_iter(holiday + 1)
+        return holidays_iter(holiday + 1)
     
     holidays_iter(0)
     print()
