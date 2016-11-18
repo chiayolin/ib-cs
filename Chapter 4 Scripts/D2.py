@@ -33,8 +33,8 @@ def is_valid_date(m, d, y):
     month_day = (31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31)
     
     # check if everthing is a number
-    if all(map(is_number, [m, d, y])):
-        m, d, y = map(int, [m, d, y])
+    if all(map(is_number, (m, d, y))):
+        m, d, y = map(int, (m, d, y))
         
         # check if month and day are valid
         return (m in range(1, 13) and d in range(1, month_day[m - 1] + 1) or \
