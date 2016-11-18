@@ -39,7 +39,7 @@ def is_valid_date(m, d, y):
         
         # check if month and day are valid
         return m in range(1, 13) and d in range(1, month_day[m - 1] + 1) or \
-               m is 2 and d in range(1, 30) and is_leap_year(y) and 1 or 0
+               m is 2 and d in range(1, 30) and is_leap_year(y)
     
     # return False if everything fails
     return False
@@ -68,7 +68,7 @@ def get_year():
 def get_option(prompt):
     result = input(prompt).lower()
     if result != '':
-        return True if result[0] == 'y' else False
+        return result[0] == 'y'
     
     return get_option(prompt)
 
