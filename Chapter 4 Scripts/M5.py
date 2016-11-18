@@ -75,7 +75,7 @@ while not secure:
     secure = [*filter(is_special_char, password_in)] and \
              [*filter(is_number, password_in)]       and \
              [*filter(is_char, password_in)]         and \
-             len(password_in) >= 8                   and True or False
+             len(password_in) >= 8
     
     if not encrypting:
         secure = True 
