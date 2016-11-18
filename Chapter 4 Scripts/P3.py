@@ -12,6 +12,6 @@
 def get_list(buff):
     char = input("Enter an integer: ")
     return char == '' and buff or \
-        get_list(buff + (int(char) < 100 and [char] or ['over']))
+           get_list(buff + (int(char) < 100 and [char] or ['over']))
 
 print(*get_list(list()), sep = ', ')

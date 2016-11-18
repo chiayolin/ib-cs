@@ -12,6 +12,6 @@
 def get_list(buff):
     char = input("Enter a name: ")
     return char == '' and filter(lambda l: l[0] in l[1:], buff) or \
-        get_list(buff + [char])
+           get_list(buff + [char])
 
 print(*get_list(list()), sep = ', ')

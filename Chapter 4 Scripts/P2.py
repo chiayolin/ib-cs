@@ -12,9 +12,9 @@ valid_values = (1, 2, 4, 8, 16, 32)
 
 def get_integer_list(buff):
     char = input("Enter an integer: ")
-    return char == '' and                                 \
-        filter(lambda n: int(n) in valid_values, buff) or \
-        get_integer_list(buff + [char])
+    return char == '' and                                    \
+           filter(lambda n: int(n) in valid_values, buff) or \
+           get_integer_list(buff + [char])
 
 print("Only these values will be stored:", valid_values)
 filtered_integers = get_integer_list(list())

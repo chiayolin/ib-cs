@@ -11,6 +11,6 @@
 def get_list(freq):
     char = input("Enter a first name: ")
     return char == '' and freq or \
-        get_list(freq + len([*filter(lambda c: c is 'a', char)]))
+           get_list(freq + len([*filter(lambda c: c is 'a', char)]))
 
 print("The letter 'a' appears", get_list(0), "times in the list.")

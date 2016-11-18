@@ -17,8 +17,8 @@ def get_list(buff):
     fruit = input("Enter a fruit name: ")
     weight = input("Enter its weight (lbs): ")
 
-    return (fruit == '' or weight == '') and             \
-        sorted(buff) or get_list(buff + [[fruit, weight]])
+    return (fruit == '' or weight == '') and sorted(buff) or \
+           get_list(buff + [[fruit, weight]])
 
 fruit_info = get_list(list())
 print(end = '\n')
