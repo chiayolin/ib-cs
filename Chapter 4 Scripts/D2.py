@@ -38,8 +38,8 @@ def is_valid_date(m, d, y):
         m, d, y = map(int, [m, d, y])
         
         # check if month and day are valid
-        return m in range(1, 13) and d in range(1, month_day[m - 1] + 1) or \
-               m is 2 and d in range(1, 30) and is_leap_year(y)
+        return (m in range(1, 13) and d in range(1, month_day[m - 1] + 1) or \
+                m is 2 and d in range(1, 30) and is_leap_year(y)) and y > 0
     
     # return False if everything fails
     return False
