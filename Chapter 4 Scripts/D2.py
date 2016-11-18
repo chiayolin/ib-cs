@@ -30,7 +30,6 @@ def is_leap_year(y):
 
 # return True if m, d, and y make up a valid date else return False
 def is_valid_date(m, d, y):
-    valid_day = lambda d: d in range(1, d + 1)
     month_day = (31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31)
     
     # check if everthing is a number
