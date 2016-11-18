@@ -32,7 +32,7 @@ def is_leap_year(y):
 def is_valid_date(m, d, y):
     month_day = (31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31)
     
-    # check if everthing is a number
+    # check if everything is a number
     if all(map(is_number, (m, d, y))):
         m, d, y = map(int, (m, d, y))
         
