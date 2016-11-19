@@ -8,7 +8,7 @@
 #   * St. Patrick’s Day (March 17th)
 #   * April Fool’s Day (April 1st)
 #   * Fourth of July (July 4th)
-#   * Labor Day (second tuesday of September)
+#   * Labor Day (first Monday of September)
 #   * Halloween 
 #   * user’s birthday
 #
