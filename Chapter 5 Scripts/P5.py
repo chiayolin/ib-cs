@@ -11,4 +11,4 @@
 def printAsterisks(n):
     print(not n and '\n' or '*', end = '')
 
-    return n != 0 and printAsterisks(n - 1)
+    return n != 0 and printAsterisks((n > 75 and 75 or n) - 1)
