@@ -9,4 +9,4 @@
 # license: GPL 3.0
 
 def ordered3(x, y, z):
-    return x < y and y < z
+    return x <= y and y <= z
