@@ -60,9 +60,12 @@ def calculateGPA(sem_grades_info, cumulative_gpa_info):
 print('This program calculates semester and cumulative GPAs\n')
 
 # get current GPA info
-total_credits = int(input('Enter total number of earned credits: '))
-cumulative_gpa = float(input('Enter your current cumulative GPA: '))
-cumulative_gpa_info = (cumulative_gpa, total_credits)
+if input("Is it your first semester (Y/n)? ").lower() != 'y':
+    total_credits = int(input('Enter total number of earned credits: '))
+    cumulative_gpa = float(input('Enter your current cumulative GPA: '))
+    cumulative_gpa_info = (cumulative_gpa, total_credits)
+else:
+    cumulative_gpa_info = (0, 0)
 
 # get current semester grade info
 print()
