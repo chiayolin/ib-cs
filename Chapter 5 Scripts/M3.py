@@ -1,7 +1,7 @@
 # M3.py - GPA Calculation Program: Allowing for Plus/Minus Grading
 #
-# Modify the GPA Calculation program in section 5.2.7 so that it is capable 
-# of calculating a GPA for plus / minus letter grades: A, A-, B+, B, B-, 
+# Modify the GPA Calculation program in section 5.2.7 so that it is capable of 
+# calculating a GPA for plus / minus letter grades: A, A-, B+, B, B-, 
 # and so forth.
 #
 # date:    12/01/2016
@@ -10,60 +10,56 @@
 
 # Semester GPA Calculation
 
-def isValidGrade(grade):
-    return all(filter(lambda g: ord(g) in \
-                      ([43, 45] + [*range(65, 71)]), grade)])
-
-def isValidCredit(credit):
-    return all(filter(lambda n: ord(n) in range(48, 58), credit)
-
 def convertGradeSign(g):
-    return g is '-' and (-.3) or g is '+' and (+.3) or 0
+    return g is '-' and (-0.3) or g is '+' and (+0.3) or 0
 
-def convertGrade(grade):
-    if grade[0] == 'F':
-        return 0
-    
-    return (lambda v: v > 4 and 4 or v < 1 and 1 or v)(        \
-            4 - (ord(grade[0]) - ord('A')) + convertGradeSign( \
-                 len(grade[0]) >= 2 and grade[1] or ''))
+def convertGrade(g):
+    if g[0] == 'F': return 0
 
-# return semester_info as a nested list
-def getGrades():
-    course_grade = input('Enter grade (hit Enter if done): ')
-    num_credits = input('Enter number of credits: ')
-
-    isValidGrade(course_grade) and isValidCredit(num_credits)
-
+    return (lambda v: v > 4 and 4 or v < 1 and 1 or v)(4.0 - (ord(g[0]) - \
+            ord('A')) + convertGradeSign(len(g) >= 2 and g[1] or ''))
 
 def getGrades():
-    semester_info = []
-    more_grades = True
-    empty_str = ''
-
-    is_invalid = lambda g: g != '' and g[0] not in ('A','B','C','D','F')
+    def _isValidGrade(g):
+        return all(filter(lambda g: ord(g) in [43, 45] + \
+               [*range(65, 71)], g))
     
-    while more_grades:
-        course_grade = input('Enter grade (hit Enter if done): ')
-        while is_invalid(course_grade):
-            course_grade = input('Enter letter grade received: ')
-
-        if course_grade == empty_str:
-            more_grades = False
-        else:
-            num_credits = int(input('Enter number of credits: '))
-            semester_info.append([num_credits, course_grade])
-
-    return semester_info
+    def _isValidCredit(c):
+        return all(filter(lambda n: ord(n) in range(49, 58), c))
+   
+    def _getCourseGradeIter():
+        grade = input('Enter grade (hit Enter if done): ')
         
+        if grade == '': return None
+        return _isValidGrade(grade) and grade or _getCourseGradeIter()
+
+    def _getCourseCreditIter():
+        credit = input('Enter number of credits: ')
+        
+        if credit == '': return None
+        return _isValidCredit(credit) and int(credit) or _getCourseCreditIter()
+
+    def _getGradesIter(info):
+        grade = _getCourseGradeIter()
+        if not grade: return info
+        
+        credit = _getCourseCreditIter()
+        if not credit: return info
+
+        return _getGradesIter(info + [[credit, grade]])
+
+    return _getGradesIter(list())
+
 def calculateGPA(sem_grades_info, cumulative_gpa_info):
+    print(sem_grades_info)
     sem_quality_pts = 0
     sem_credits = 0
     current_cumulative_gpa, total_credits = cumulative_gpa_info
 
+
     for k in range(len(sem_grades_info)):
         num_credits, letter_grade = sem_grades_info[k]
-        
+        print(convertGrade(letter_grade), letter_grade)
         sem_quality_pts = sem_quality_pts + \
                           num_credits * convertGrade(letter_grade)
         
