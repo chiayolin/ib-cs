@@ -14,11 +14,11 @@
 def getCreditIter(prompt):
     # check if c is valid credit value
     def _isValidCredit(c):
-        return all([*map(lambda n: ord(n) in range(49, 58), c)])
+        return all([*map(lambda n: ord(n) in range(49, 58), c)]) \
+               and credit != ''
 
     credit = input(prompt)
 
-    if credit == "": return None
     return _isValidCredit(credit) and int(credit) or getCreditIter(prompt)
 
 # get cumulative GPA info
@@ -36,7 +36,7 @@ def getCumulativeGPA():
         return _isValidGPA(current_gpa) and float(current_gpa) \
                or _getCurrentGpaIter()
             
-    if input("Is it your first semester (Y/n)? ").lower() != "y":
+    if input("Is it your first semester (y/n)? ").lower() != "y":
         total_credits = getCreditIter("Enter total number of earned credits: ")
         cumulative_gpa = _getCurrentGpaIter()
 
@@ -74,11 +74,11 @@ def getGrades():
 
 # convert letter grade to numerical value
 def convertGrade(g):
-    if g[0] == "F": return 0
+    if g[0] == 'F': return 0
         
     # convert "+" and "-" to numerical offset
     def _convertGradeSign(g):
-        return g is "-" and (-0.3) or g is "+" and (+0.3) or 0
+        return g is '-' and (-0.3) or g is '+' and (+0.3) or 0
     
     return (lambda v: v > 4 and 4 or v < 1 and 1 or v)(4.0 - (ord(g[0]) - \
             ord("A")) + _convertGradeSign(len(g) >= 2 and g[1] or ""))
