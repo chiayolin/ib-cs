@@ -23,18 +23,19 @@ def getCreditIter(prompt):
 
 # get cumulative GPA info
 def getCumulativeGPA():
-    def _isValidGPA(gpa):
-        if gpa == "": return None
+    def _isNumber(n):
+        return ord(n) in range(48, 58)
 
-        return all([*map(lambda c: ord(c) in [46] + [*range(48, 58)], gpa)]) \
-               and len([*map(lambda c: ord(c) == 46, gpa)]) < 2 \
-               and 0 < int(gpa) and int(gpa) <= 4
+    def _isValidGPA(gpa):
+        return gpa != '' and len([*filter(lambda c: c is '.', gpa)]) < 2 \
+               and all([*map(lambda c: _isNumber(c) or c is '.', gpa)]) \
+               and 0 <= float(gpa) and float(gpa) <= 4
 
     def _getCurrentGpaIter():
         current_gpa = input("Enter your current cumulative GPA: ")
         
-        return _isValidGPA(current_gpa) and float(current_gpa) \
-               or _getCurrentGpaIter()
+        return float(current_gpa) if _isValidGPA(current_gpa) \
+               else _getCurrentGpaIter()
             
     if input("Is it your first semester (y/N)? ").lower() != "y":
         total_credits = getCreditIter("Enter total number of earned credits: ")
@@ -57,10 +58,11 @@ def getGrades():
     def _getCourseGradeIter():
         grade = input("Enter grade (hit Enter if done): ").upper()
         
-        if grade == "": return None
+        if grade == '': return None
         return _isValidGrade(grade) and grade or _getCourseGradeIter()
     
     # inner wrapper for functions and return list if nothing is entered
+    # TODO: fix program crashes if first entry is an empty string
     def _getGradesIter(info):
         grade = _getCourseGradeIter()
         if not grade: return info
