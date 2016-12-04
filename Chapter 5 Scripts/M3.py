@@ -10,88 +10,116 @@
 
 # Semester GPA Calculation
 
-def convertGradeSign(g):
-    return g is '-' and (-0.3) or g is '+' and (+0.3) or 0
-
-def convertGrade(g):
-    if g[0] == 'F': return 0
-
-    return (lambda v: v > 4 and 4 or v < 1 and 1 or v)(4.0 - (ord(g[0]) - \
-            ord('A')) + convertGradeSign(len(g) >= 2 and g[1] or ''))
-
-def getGrades():
-    def _isValidGrade(g):
-        return all(filter(lambda g: ord(g) in [43, 45] + \
-               [*range(65, 71)], g))
-    
+# get one credit value from user and reprompt if entry is invalid
+def getCreditIter(prompt):
+    # check if c is valid credit value
     def _isValidCredit(c):
-        return all(filter(lambda n: ord(n) in range(49, 58), c))
-   
+        return all([*map(lambda n: ord(n) in range(49, 58), c)])
+
+    credit = input(prompt)
+
+    if credit == "": return None
+    return _isValidCredit(credit) and int(credit) or getCreditIter(prompt)
+
+# get cumulative GPA info
+def getCumulativeGPA():
+    def _isValidGPA(gpa):
+        if gpa == "": return None
+
+        return all([*map(lambda c: ord(c) in [46] + [*range(48, 58)], gpa)]) \
+               and len([*map(lambda c: ord(c) == 46, gpa)]) < 2 \
+               and 0 < int(gpa) and int(gpa) <= 4
+
+    def _getCurrentGpaIter():
+        current_gpa = input("Enter your current cumulative GPA: ")
+        
+        return _isValidGPA(current_gpa) and float(current_gpa) \
+               or _getCurrentGpaIter()
+            
+    if input("Is it your first semester (Y/n)? ").lower() != "y":
+        total_credits = getCreditIter("Enter total number of earned credits: ")
+        cumulative_gpa = _getCurrentGpaIter()
+
+        cumulative_gpa_info = (cumulative_gpa, total_credits)
+    else:
+        cumulative_gpa_info = (0, 0)
+
+    return cumulative_gpa_info
+
+# get grades & credits from user
+def getGrades():
+    # check if g is valid letter grade
+    def _isValidGrade(g):
+        return all(map(lambda c: ord(c) in ([43, 45] + \
+               [*range(65, 71)]), g))
+       
+    # get one grade from user and reprompt if entry is invalid
     def _getCourseGradeIter():
-        grade = input('Enter grade (hit Enter if done): ')
+        grade = input("Enter grade (hit Enter if done): ").upper()
         
-        if grade == '': return None
+        if grade == "": return None
         return _isValidGrade(grade) and grade or _getCourseGradeIter()
-
-    def _getCourseCreditIter():
-        credit = input('Enter number of credits: ')
-        
-        if credit == '': return None
-        return _isValidCredit(credit) and int(credit) or _getCourseCreditIter()
-
+    
+    # inner wrapper for functions and return list if nothing is entered
     def _getGradesIter(info):
         grade = _getCourseGradeIter()
         if not grade: return info
         
-        credit = _getCourseCreditIter()
+        credit = getCreditIter("Enter number of credits: ")
         if not credit: return info
 
         return _getGradesIter(info + [[credit, grade]])
 
     return _getGradesIter(list())
 
-def calculateGPA(sem_grades_info, cumulative_gpa_info):
-    print(sem_grades_info)
-    sem_quality_pts = 0
-    sem_credits = 0
-    current_cumulative_gpa, total_credits = cumulative_gpa_info
-
-
-    for k in range(len(sem_grades_info)):
-        num_credits, letter_grade = sem_grades_info[k]
-        print(convertGrade(letter_grade), letter_grade)
-        sem_quality_pts = sem_quality_pts + \
-                          num_credits * convertGrade(letter_grade)
+# convert letter grade to numerical value
+def convertGrade(g):
+    if g[0] == "F": return 0
         
-        sem_credits = sem_credits + num_credits
+    # convert "+" and "-" to numerical offset
+    def _convertGradeSign(g):
+        return g is "-" and (-0.3) or g is "+" and (+0.3) or 0
+    
+    return (lambda v: v > 4 and 4 or v < 1 and 1 or v)(4.0 - (ord(g[0]) - \
+            ord("A")) + _convertGradeSign(len(g) >= 2 and g[1] or ""))
 
-    sem_gpa = sem_quality_pts / sem_credits
-    new_cumulative_gpa = (current_cumulative_gpa * total_credits + sem_gpa * \
-                          sem_credits) / (total_credits + sem_credits)
+def calculateGPA(sem_grades_info, cumulative_gpa_info):
+    # unpack the info
+    current_cumulative_gpa, total_credits = cumulative_gpa_info
+    
+    # calculate the GPA
+    def _calculateGpaIter(k, sem_quality_pts, sem_credits):
+        if k == 0:
+            sem_gpa = sem_quality_pts / sem_credits
+            
+            # return semester GPA and new cumulative GPA in a tuple
+            return (sem_gpa, (lambda sem_gpa: (current_cumulative_gpa * \
+                              total_credits + sem_gpa * sem_credits) / \
+                              (total_credits + sem_credits))(sem_gpa))
+        
+        num_credits, letter_grade = sem_grades_info[-k]
+        sem_quality_pts += num_credits * convertGrade(letter_grade)
+
+        sem_credits += num_credits
+
+        return _calculateGpaIter(k - 1, sem_quality_pts, sem_credits)
                    
-    return (sem_gpa, new_cumulative_gpa)
+    return _calculateGpaIter(len(sem_grades_info), 0, 0)
 
-# ---- main
+def main():
+    # program greeting
+    print("This program calculates semester and cumulative GPAs\n")
 
-# program greeting
-print('This program calculates semester and cumulative GPAs\n')
+    # get cumulative GPA info and grades
+    cumulative_gpa = getCumulativeGPA()
+    semester_gpa = getGrades()
 
-# get current GPA info
-if input("Is it your first semester (Y/n)? ").lower() != 'y':
-    total_credits = int(input('Enter total number of earned credits: '))
-    cumulative_gpa = float(input('Enter your current cumulative GPA: '))
-    cumulative_gpa_info = (cumulative_gpa, total_credits)
-else:
-    cumulative_gpa_info = (0, 0)
+    # calculate semester gpa and new cumulative gpa
+    semester_gpa, cumulative_gpa = calculateGPA(semester_gpa, cumulative_gpa)
 
-# get current semester grade info
-print()
-semester_grades = getGrades()
+    # display semester gpa and new cumulative gpa
+    print("\nYour semester GPA is", format(semester_gpa, ".2f"))
+    print("Your new cumulative GPA is", format(cumulative_gpa, ".2f"))
 
-# calculate semester gpa and new cumulative gpa
-semester_gpa, cumulative_gpa = calculateGPA(semester_grades, 
-                                            cumulative_gpa_info)
+main()
 
-# display semester gpa and new cumulative gpa
-print('\nYour semester GPA is', format(semester_gpa, '.2f'))
-print('Your new cumulative GPA is', format(cumulative_gpa, '.2f'))
