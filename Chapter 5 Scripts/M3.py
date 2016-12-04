@@ -83,8 +83,8 @@ def convertGrade(g):
     def _convertGradeSign(g):
         return g is '-' and (-0.3) or g is '+' and (+0.3) or 0
     
-    return (lambda v: v > 4 and 4 or v < 1 and 1 or v)(4.0 - (ord(g[0]) - \
-            ord("A")) + _convertGradeSign(len(g) >= 2 and g[1] or ""))
+    return (lambda v: v > 4 and 4 or v < 1 and 1 or v)(4.0 - (ord(g[0]) \
+            - ord("A")) + _convertGradeSign(len(g) >= 2 and g[1] or ""))
 
 def calculateGPA(sem_grades_info, cumulative_gpa_info):
     # unpack the info
