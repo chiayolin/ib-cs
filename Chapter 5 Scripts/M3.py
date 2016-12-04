@@ -52,8 +52,8 @@ def getCumulativeGPA():
 def getGrades():
     # check if g is valid letter grade
     def _isValidGrade(g):
-        return all(map(lambda c: ord(c) in ([43, 45] + \
-               [*range(65, 71)]), g))
+        return all(map(lambda c: ord(c) in ([43, 45] \
+               + [*range(65, 71)]), g))
        
     # get one grade from user and reprompt if entry is invalid
     def _getCourseGradeIter():
@@ -96,9 +96,9 @@ def calculateGPA(sem_grades_info, cumulative_gpa_info):
             sem_gpa = sem_quality_pts / sem_credits
             
             # return semester GPA and new cumulative GPA in a tuple
-            return (sem_gpa, (lambda sem_gpa: (current_cumulative_gpa * \
-                              total_credits + sem_gpa * sem_credits) / \
-                              (total_credits + sem_credits))(sem_gpa))
+            return (sem_gpa, (lambda sem_gpa: (current_cumulative_gpa \
+                              * total_credits + sem_gpa * sem_credits) \
+                              / (total_credits + sem_credits))(sem_gpa))
         
         num_credits, letter_grade = sem_grades_info[-k]
         sem_quality_pts += num_credits * convertGrade(letter_grade)
