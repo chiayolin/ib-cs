@@ -36,7 +36,7 @@ def getCumulativeGPA():
         return _isValidGPA(current_gpa) and float(current_gpa) \
                or _getCurrentGpaIter()
             
-    if input("Is it your first semester (y/n)? ").lower() != "y":
+    if input("Is it your first semester (y/N)? ").lower() != "y":
         total_credits = getCreditIter("Enter total number of earned credits: ")
         cumulative_gpa = _getCurrentGpaIter()
 
