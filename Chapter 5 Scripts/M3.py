@@ -40,11 +40,12 @@ def getCumulativeGPA():
     if input("Is it your first semester (y/N)? ").lower() != "y":
         total_credits = getCreditIter("Enter total number of earned credits: ")
         cumulative_gpa = _getCurrentGpaIter()
-
+        
         cumulative_gpa_info = (cumulative_gpa, total_credits)
     else:
         cumulative_gpa_info = (0, 0)
-
+    
+    print()
     return cumulative_gpa_info
 
 # get grades & credits from user
