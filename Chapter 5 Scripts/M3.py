@@ -126,3 +126,27 @@ def main():
 
 main()
 
+'''
+This program doesn't accept values for earned credits
+that are divisible by 10. I looked for the error but the
+code is too dense to read easily:
+
+This program calculates semester and cumulative GPAs
+
+Is it your first semester (y/N)? n
+Enter total number of earned credits: 100
+Enter total number of earned credits: 90
+Enter total number of earned credits: 80
+Enter total number of earned credits: 70
+Enter total number of earned credits: 60
+Enter total number of earned credits: 50
+Enter total number of earned credits: 40
+Enter total number of earned credits: 30
+Enter total number of earned credits: 20
+Enter total number of earned credits: 10
+Enter total number of earned credits: 0
+Enter total number of earned credits: 99
+Enter your current cumulative GPA:
+
+Can you find it?
+'''
