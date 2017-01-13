@@ -47,6 +47,8 @@ def push(s, item):
 
     s.append(item)
 
+    return
+
 def pop(s):
 
     """
@@ -58,5 +60,6 @@ def pop(s):
 
     item = s[len(s) - 1]
     del s[len(s) - 1]
+    
     return item
 

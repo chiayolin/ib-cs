@@ -20,9 +20,13 @@
 # author:  n/a
 # license: n/a
 
+# TODO
+# Implement this using one list instead of two list nested in one list
+
 from stack_module import *
 
 def getDoubleStack():
+    
     """
     Creates and returns an empty double-ended stack.
     """
@@ -30,54 +34,58 @@ def getDoubleStack():
     return [getStack(), getStack()]
 
 def isDoubleEmpty(s, n):
+    
     """
-    Returns True if stack n empty such that 2 > n >= 0.
-    Otherwise, returns False.
+    Returns True if stack n empty such that n = 0 indicates the first stack
+    and n != 0 indicates the second stack. Otherwise, returns False.
     """
     
-    return n in range (0, 2) and isEmpty(s[n])
+    return n == 0 and isEmpty(s[n]) or isEmpty(s[1])
 
 def topDouble(s, n):
+    
     """
-    Returns value of the top item of stack n such that 2 > n >= 0, 
-    if stack not empty. Othereise, returns None.
+    Returns value of the top item of stack n such that n = 0 indicates the
+    first stack and n != 0 indicates the second stack, if stack not empty. 
+    Othereise, returns None.
     """
 
     if n == 0:
         return s[n] and s[n][0] or None
-    elif n == 1:
-        return top(s[n])
     
-    return None
+    return top(s[1])   
 
 def pushDouble(s, item, n):
+    
     """
-    Pushes item on the top of stack n such that 2 > n >= 0.
+    Pushes item on the top of stack n such that n = 0 indicates the first
+    stack and n != 0 indicates the second stack.
     """
 
     if n == 0:
         buff = list(s[n])
         del s[n][:]
         s[n].extend([item] + buff)
-    elif n == 1:
-        return push(s[n], item)
-
-    return
+    
+    return push(s[1], item)
 
 def popDouble(s, n):
+    
     """
-    Returns top of stack if stack n not empty such that 2 > n >= 0. 
-    Othereise, returns None.
+    Returns top of stack if stack n not empty such that n = 0 indicates 
+    the first stack and n != 0 indicates the second stack. Othereise, 
+    returns None.
     """
 
     if n == 0:
         item = s[n][0]
         del s[n][:1]
         return item
-    elif n == 1:
-        return pop(s[n])
+    
+    return pop(s[1])
 
 def main():
+    
     """
     Tests
     """
@@ -107,6 +115,8 @@ def main():
    
     print("Stacks empty?", isDoubleEmpty(stack, 0) and \
                            isDoubleEmpty(stack, 1))
+
+    return
 
 main()
 
