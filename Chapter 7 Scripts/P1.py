@@ -11,6 +11,7 @@
 # license: GPL 3.0
 
 def convertStatus(status):
+    
     """
     The function convertStatus takes a status code (one charecter long) as 
     an arugment and returns the coresponding string. The function returns
@@ -22,7 +23,6 @@ def convertStatus(status):
         's' -->  'sophomore' 
         'j' -->  'junior'
         's' -->  'senior'
-
     """
 
     code = ('f', 's', 'j', 'r', '')
