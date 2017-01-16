@@ -16,16 +16,3 @@ def palindromeChecker(string):
     """
 
     return (lambda s: s == s[::-1])(string.lower())
-
-def palindromeCheckerTest():
-    test_cases = ["Civic", "LeVel", "maDam", "Mom", "noon", "Racecar", 
-                  "rADar", "ReddEr", "REFER", "TENET", "Saigon", "trUmp", 
-                  "Obama", "nixon", "turING", "leNNon", "YOKO", "paUL"]
-    
-    for palindrome in test_cases:
-        if palindromeChecker(palindrome):
-            print(format('"' + palindrome + '"', "<10" ), "--> palindrome")
-        else:
-            print(format('"' + palindrome + '"', "<10" ), "--> not palindrome")
-
-palindromeCheckerTest()
