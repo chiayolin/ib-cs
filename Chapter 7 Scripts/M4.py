@@ -79,12 +79,13 @@ def printYearCal(year_cal):
 
 def printMonthCal(month_cal, y):
     print(format(reduce(lambda x, y: x + y, filter(lambda c: c != ' ', \
-                        *month_cal[0])) + ' ' + str(y), ' ^20'), sep = '')
-    
+                        *month_cal[0])) + ' ' + str(y), ' ^20'), sep = '')   
     row = 1
     while row != 8:
         print(*month_cal[row], end = '\n')
         row += 1
+
+    return
 
 def main():
     # This main function is too ugly so I have to rewrite it later
@@ -99,5 +100,7 @@ def main():
         printYearCal(consYearCal(year))
     else:
         print("Invalid option")
+
+    return
 
 main()
