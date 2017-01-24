@@ -1,12 +1,14 @@
-# M3.py - Stack Module: Double-Ended Stacks
+# M2.py - Stack Module: Ability to “Peek” in Stack
 #
-# This file is part of M3.py.
+# For the stack module given in Figure 7-15, redesign and re-implement 
+# the relevant parts of the module to allow the ability to “peek” into 
+# the stack to  find out if a given element is on the stack or not. 
+# Write a small program to demonstrate this new version of the stack 
+# module.
 #
 # date:    01/12/2017
 # author:  n/a
 # license: n/a
-
-# stack Module
 
 def getStack():
     
@@ -52,7 +54,7 @@ def push(s, item):
 def pop(s):
 
     """
-    Returns top of stack if stack 1 not empty. Othereise, returns None.
+    Returns and pops the top of stack if not empty. Othereise, returns None.
     """
 
     if isEmpty(s):
@@ -63,3 +65,10 @@ def pop(s):
     
     return item
 
+def peek(s, item):
+    
+    """
+    Returns True if a given element is on the stack else returns False
+    """
+
+    return item in s
