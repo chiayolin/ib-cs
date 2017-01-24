@@ -64,19 +64,8 @@ def pop(s):
     
     return item
 
-def main():
-    
-    """
-    Tests
-    """
-
-    stack = getStack()
-    print("Stack Empty?", isEmpty(stack))
-    
-    for i in range(0, 102):
-        if not push(stack, i):
-            print(i, "pushed to the stack")
-        else:
-            print("stack overflow:", i)
-
-main()
+'''
+The problem says to write a program to demonstrate the stack module. That
+means you need to write another file that imports stack, not add a main function
+to the stack module.
+'''
