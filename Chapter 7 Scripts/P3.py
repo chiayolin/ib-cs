@@ -35,10 +35,11 @@ def getData(buff = []):
         Enter integer pair (hit Enter to quit): 1 2
         Enter integer pair (hit Enter to quit): 5 3
     
-    For the example above the function returns [['1', '2'], ['5', 3']]
+    For the example above the function returns [['1 2'], ['5 3']]
     """
 
     pair = input("Enter integer pair (hit Enter to quit): ")
+    
     return pair == '' and buff or getData([pair] + buff)
 
 def extractValues(values, buff = [], counter = 0):
@@ -47,11 +48,11 @@ def extractValues(values, buff = [], counter = 0):
     extractValues takes a list of strings and returns a list of pairs in
     the atomic values of each integer in the string:
     
-        ('1', '2'), ('3', '4')) --> ((1, 2), (3, 4))
+        ('1 2'), ('3 4')) --> ((1, 2), (3, 4))
     """
-    
+
     return counter != len(values) - 1 and buff or extractValues(values, \
-           [[*map(int, values[counter].split(" "))]] + buff, counter + 1)
+           [[*map(int, values[counter].split(' '))]] + buff, counter + 1)
 
 def calcRations(pairs):
     
@@ -71,4 +72,17 @@ def main():
     print(*calcRations(extractValues(getData())), sep = '\n')
 
     return
+
+main()
+
+
+'''
+A docstring isn't a prose description of a the function. It has a
+fairly specific form, especially the first line:
+'''
+
+''' Return value
+
+    Other information
+'''
 
