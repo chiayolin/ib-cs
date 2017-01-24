@@ -16,3 +16,11 @@ def palindromeChecker(string):
     """
 
     return (lambda s: s == s[::-1])(string.lower())
+
+
+'''
+You were meant to use iteration for this one. I realize that
+the slicing you wrote reverses the string using iteration,
+but if you get a problem like this on the IB exam you won't
+have access to that sugar.
+'''
