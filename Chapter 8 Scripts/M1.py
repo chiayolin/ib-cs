@@ -25,7 +25,6 @@ def getLetter():
     return input("Letter to remove: ")[0].lower()
 
 def fileDiff(orig_file, modi_file, letter):
-    orig_file.seek(0) # reset file pointer
     orig_file_len = sum(map(len, orig_file))
     orig_file.seek(0) # reset file pointer
     modi_file_len = sum(map(len, modi_file))
@@ -51,6 +50,7 @@ def M1():
     
     orig_file.seek(0) # reset file pointer
     print('\n', *modi_file, sep = '')
+    orig_file.seek(0) # reset file pointer
     print(*fileDiff(orig_file, modi_file, letter_rm), sep = '\n')
 
     return
