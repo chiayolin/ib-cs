@@ -6,7 +6,7 @@
 #
 #   ‘Today’s high temperature will be 75 degrees’ --> False
 #
-# date:    02/09/2017
+# date:    02/12/2017
 # author:  Chiayo Lin
 # license: GPL 3.0
 
