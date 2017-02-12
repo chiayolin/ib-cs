@@ -42,7 +42,7 @@ def writeFile(modi_file_src, modi_file_name):
     
     return modi_file.close()
 
-def main():
+def M1():
     orig_file = getFile()
     letter_rm = getLetter() 
     modi_file = map(lambda line: removeLetter(line, letter_rm), orig_file)
@@ -55,5 +55,5 @@ def main():
 
     return
 
-__name__ == "__main__" and main()
+__name__ == "__main__" and M1()
 
