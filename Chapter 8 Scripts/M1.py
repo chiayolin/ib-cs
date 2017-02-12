@@ -45,10 +45,10 @@ def M1():
     orig_file = getFile()
     letter_rm = getLetter() 
     modi_file = map(lambda line: removeLetter(line, letter_rm), orig_file)
-    
+
     writeFile(modi_file, "e_" + orig_file.name) 
-    
     orig_file.seek(0) # reset file pointer
+
     print('\n', *modi_file, sep = '')
     orig_file.seek(0) # reset file pointer
     print(*fileDiff(orig_file, modi_file, letter_rm), sep = '\n')
