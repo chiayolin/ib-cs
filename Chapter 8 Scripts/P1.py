@@ -17,5 +17,6 @@ def reduceWhitespace(line):
     """ 
     Returns line with extra whitespaces removed.
     """
-    
-    return reduce(lambda h, t: h + ' ' + t, line.split()) 
+
+    return reduce(lambda h, t: h + ' ' + t, line.split()).strip()
+
