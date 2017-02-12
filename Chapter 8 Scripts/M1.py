@@ -16,10 +16,9 @@ def removeLetter(line, letter = 'e'):
     return joinList(filter(lambda x: x != letter.upper() and   \
                                      x != letter.lower(), line))
 
-def getFile():
-    default_name = "alice_tea_party.txt"
+def getFile(default_name = "alice_tea_party.txt"):
     name = input("Enter File Name (" + default_name + "): ")
-    
+
     return open(not name and default_name or name, 'r')
 
 def getLetter():
@@ -53,6 +52,8 @@ def main():
     orig_file.seek(0) # reset file pointer
     print('\n', *modi_file, sep = '')
     print(*fileDiff(orig_file, modi_file, letter_rm), sep = '\n')
+
+    return
 
 __name__ == "__main__" and main()
 
