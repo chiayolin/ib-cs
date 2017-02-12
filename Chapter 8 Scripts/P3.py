@@ -11,6 +11,6 @@
 # license: GPL 3.0
 
 def checkQuotes(line):
-    return not (len([*filter(lambda x: x in "\'", line)]) % 2  or  \
-                len([*filter(lambda x: x in "\"", line)]) % 2) and True
+    return not (len([*filter(lambda x: x in "\'", line)]) % 2 or \
+                len([*filter(lambda x: x in "\"", line)]) % 2)
 
