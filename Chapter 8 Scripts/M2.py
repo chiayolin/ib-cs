@@ -63,7 +63,7 @@ def writeFile(modi_file_src, modi_file_name):
     
     return modi_file.close()
 
-def makeHeaderText(string):
+def headerText(string):
     return "\n\033[1m\033[4m" + string + "\033[0m\033[0m\n"
 
 def M2():
@@ -72,12 +72,12 @@ def M2():
     modi_file = removePercentage(orig_file, percentag)
     
     orig_file.seek(0) # reset file pointer
-    print(makeHeaderText("Original File:"), *orig_file, sep = '', end = '')
+    print(headerText("Original File:"), *orig_file, sep = '', end = '')
 
     writeFile(modi_file, "e_" + orig_file.name) 
     orig_file.seek(0) # reset file pointer
 
-    print(makeHeaderText("Modified File:"), *modi_file, sep = '')
+    print(headerText("Modified File:"), *modi_file, sep = '')
 
     orig_file.seek(0) # reset file pointer
     print(*fileDiff(orig_file, modi_file), sep = '\n')
