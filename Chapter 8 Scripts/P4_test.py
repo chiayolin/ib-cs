@@ -9,5 +9,5 @@
 from P4 import countAllLetters
 
 for line in open("P4_text.txt", 'r'):
-    print(line[:-1] + " --->\n", countAllLetters(line))
+    print(line[:-1] + " --->\n", countAllLetters(line), sep = '')
 
