@@ -47,27 +47,57 @@ def countWords(input_file, search_word):
    
     return len([*filter(lambda t: t == search_word, tokenize(input_file))])
 
+def writeCountWordList(input_file, word_list):
+    
+    """
+    Writes all the word counts base on word_list file object in input_file 
+    file object file to a text file called input_file.name + ".wc".
+    """
+    
+    def makeResult(file_name, search_word, num_occurrences):
+        return not num_occurrences and "No occurrences of word '" +      \
+               search_word + "' found in file '" + file_name + "'\n" or  \
+               "The word '" + search_word + "' occurs " +                \
+               str(num_occurrences) + " times in file '" + file_name + "'\n"
+    
+    wc_file = open(input_file.name + ".wc", 'w')
+
+    for search_word in word_list:
+        input_file.seek(0) # reset file pointer
+        wc_file.write(makeResult(input_file.name, search_word,
+                                 countWords(input_file, search_word)))
+
+    return
+
+def getWordList(word_list_file = "M6_text.txt"):
+
+    """
+    Returns a list of words without newlines from word_list_file.
+    """
+    
+    word_list = []
+    for word in open(word_list_file, 'r'):
+        word_list += [word[:-1]]
+
+    return word_list
+    
+
 ## main
 
 # program welcome
 print('This program will display the number of occurrences of a')
 print('specified word within a given text file\n')
 
-# open file to search
 file_name, input_file = getFile()
+writeCountWordList(input_file, getWordList())
 
-# get search word
-search_word = input('Enter word to search: ')
-search_word = search_word.lower()
+print("Result is written to '" + file_name + ".wc'")
 
-# count all occurrences of search word
-num_occurrences = countWords(input_file, search_word)
 
-# display results
-if num_occurrences == 0:
-    print('No occurrences of word', "'" + search_word + "'",
-          'found in file', file_name)
-else:
-    print('The word', "'" + search_word + "'", 'occurs', num_occurrences,
-          'times in file', file_name)
-      
+
+
+
+
+
+
+
