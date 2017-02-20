@@ -92,11 +92,3 @@ writeCountWordList(input_file, getWordList())
 
 print("Result is written to '" + file_name + ".wc'")
 
-
-
-
-
-
-
-
-
