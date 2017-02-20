@@ -81,7 +81,6 @@ def getWordList(word_list_file = "M6_text.txt"):
 
     return word_list
     
-
 ## main
 
 # program welcome
