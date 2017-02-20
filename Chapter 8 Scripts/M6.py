@@ -8,15 +8,15 @@
 # author:  Chiayo Lin
 # license: GPL 3.0
 
-# Word Frequency Count Program
+## Word Frequency Count Program
 
 import re
 
 def getFile():
-    '''
-        Returns the file name and associated file object for reading the
-        file  as tuple of the form (file_name, input_file).
-    '''
+    """
+    Returns the file name and associated file object for reading the
+    file  as tuple of the form (file_name, input_file).
+    """
     
     input_file_opened = False
     while not input_file_opened:
@@ -30,53 +30,23 @@ def getFile():
     return (file_name, input_file)
 
 def countWords(input_file, search_word):
-
-    # init
-    space = ' '
-    num_occurrences = 0
-    word_delimiters = (space, ',', ';', ':', '.','\n',
-                       '"',"'", '(', ')')
-    search_word_len = len(search_word)
     
-    for line in input_file:
-        end_of_line = False
-        
-        # convert line read to all lower case chars
-        line = line.lower()
-        
-        # scan line until end of line reached
-        while not end_of_line:
-            
-            try:   
-                # search for word in current line
-                index = line.index(search_word)
+    """ 
+    Returns the number of occurrences of search_word in the provided 
+    input_file file object.
+    """
 
-                # if word at start of line followed by a delimiter
-                if index == 0 and line[search_word_len] in word_delimiters:
-                        found_search_word = True
-                        
-                # if search word within line, check chars before/after
-                elif line[index - 1] in word_delimiters and \
-                   line[index + search_word_len] in word_delimiters:
-                    found_search_word = True
-                    
-                # if found within other letters, then not search word
-                else:
-                    found_search_word = False
-                    
-                # if search word found, increment count
-                if found_search_word:
-                     num_occurrences = num_occurrences + 1
+    def tokenize(lines):
+        tokens = []
+        delimiters = "[, \-!?:()\n\'\"]+"
+        for line in lines:
+            tokens += [*filter(None, re.split(delimeters, line))]
 
-                # reset line to rest of line following search word
-                line = line[index + search_word_len: len(line)] 
+        return tokens
 
-            except ValueError:
-                end_of_line = True
-                
-    return num_occurrences
-    
-# ---- main
+    return len([*filter(lambda t: t is search_word, tokenize(input_file))])
+
+## main
 
 # program welcome
 print('This program will display the number of occurrences of a')
