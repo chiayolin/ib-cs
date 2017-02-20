@@ -4,7 +4,7 @@
 # in a given text file are output to a file with the same name as the file 
 # read, but with the file extension '.wc' (for 'word count').
 #
-# date:    02/12/2017
+# date:    02/21/2017
 # author:  Chiayo Lin
 # license: GPL 3.0
 
