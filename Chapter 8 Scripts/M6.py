@@ -55,9 +55,9 @@ def writeCountWordList(input_file, word_list):
     """
     
     def makeResult(file_name, search_word, num_occurrences):
-        return not num_occurrences and "No occurrences of word '" +      \
-               search_word + "' found in file '" + file_name + "'\n" or  \
-               "The word '" + search_word + "' occurs " +                \
+        return not num_occurrences and "No occurrences of word '" +     \
+               search_word + "' found in file '" + file_name + "'\n" or \
+               "The word '" + search_word + "' occurs " +               \
                str(num_occurrences) + " times in file '" + file_name + "'\n"
     
     wc_file = open(input_file.name + ".wc", 'w')
