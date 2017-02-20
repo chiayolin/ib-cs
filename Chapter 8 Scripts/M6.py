@@ -13,6 +13,7 @@
 import re
 
 def getFile():
+    
     """
     Returns the file name and associated file object for reading the
     file  as tuple of the form (file_name, input_file).
@@ -40,11 +41,11 @@ def countWords(input_file, search_word):
         tokens = []
         delimiters = "[, \-!?:()\n\'\"]+"
         for line in lines:
-            tokens += [*filter(None, re.split(delimeters, line))]
-
+            tokens += [*filter(None, re.split(delimiters, line))]
+        
         return tokens
-
-    return len([*filter(lambda t: t is search_word, tokenize(input_file))])
+   
+    return len([*filter(lambda t: t == search_word, tokenize(input_file))])
 
 ## main
 
