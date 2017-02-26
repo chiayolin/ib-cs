@@ -49,7 +49,7 @@ def crypto(text, vector, encryption = True):
     return (result[::mode], vector)
 
 def getVector(flag, k_file): 
-    return flag and randint(0, 10) or int(k_file.readline(), 16)
+    return flag and randint(0, 0xffffffff) or int(k_file.readline(), 16)
 
 def D3():
     encrypt = input("Encyption (E) / Decryption (D): ").lower()[0] == 'e'
