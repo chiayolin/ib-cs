@@ -31,24 +31,25 @@ def getFile(prompt, flag):
         sys.stderr.write("Error: file cannot be read.\n")
         sys.exit(os.EX_IOERR) # use Unix exit code
 
-def crypto(text, vector, encryption):
+def crypto(text, vector, encryption = True):
     keyGen = lambda v: int(v * sin(v) + v)
     mode = encryption and +1 or -1
     inc = mode * 3
-    print(mode, inc)
-
-    result = str()
     
-    text = text[::mode]
-    for char in text:
-        key = mode * keyGen(vector)
-        result += chr((((ord(char) - 32) + key) % 95) + 32)
-        vector += inc
+    # vector is off by one increment while deciphering
+    vector += not encryption and inc
+    
+    result = str()
+    for char in text[::mode]:
+        if ord(char) in range(32, 127):
+            ch_key = mode * keyGen(vector)
+            result += chr((((ord(char) - 32) + ch_key) % 95) + 32)
+            vector += inc
 
-    return (result[::mode], vector + inc)
+    return (result[::mode], vector)
 
-def getVector(flag, k_file):
-    return flag and randint(0, 0xffffffff) or int(k_file.readline(), 16)
+def getVector(flag, k_file): 
+    return flag and randint(0, 10) or int(k_file.readline(), 16)
 
 def D3():
     encrypt = input("Encyption (E) / Decryption (D): ").lower()[0] == 'e'
@@ -60,10 +61,15 @@ def D3():
     
     for line in i_file:
         vector = getVector(encrypt, k_file)
-        result, vector = crypto(line, vector, encrypt)       
+        result, vector = crypto(line, vector, encrypt)
+
         if encrypt:
             k_file.write(format(vector, '08x') + '\n')
         o_file.write(result + '\n')
+
     o_file.close()
+    k_file.close()
+
+    return
 
 if __name__ == "__main__": D3()
