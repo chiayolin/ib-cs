@@ -1,4 +1,8 @@
-# How to Name Your Script
+# IB CS Y1
+
+![Meme too dank to load](https://i.imgur.com/Ppda7ly.jpg)
+
+## How to Name Your Script
 
 All the scripts should be named exectly as the problems with a `.py` 
 extension and save them in the chapter folder corresponding to the 
